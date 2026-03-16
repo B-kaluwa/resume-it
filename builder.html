@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Create Your Professional Resume</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/builder.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">📄 Resume Builder</h1>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-link">← Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="builder-container">
+        <div class="builder-sidebar">
+            <div class="sidebar-header">
+                <h2>Resume Editor</h2>
+                <div class="template-selector">
+                    <label for="templateSelect">Template:</label>
+                    <select id="templateSelect" onchange="changeTemplate()">
+                        <option value="modern">Modern</option>
+                        <option value="classic">Classic</option>
+                        <option value="minimalist">Minimalist</option>
+                    </select>
+                </div>
+            </div>
+
+            <form id="resumeForm" class="resume-form">
+                <!-- Personal Information Section -->
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" placeholder="John Doe" required onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="john@example.com" required onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" placeholder="+1 (555) 123-4567" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="City, Country" onchange="updatePreview()">
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">Professional Summary</label>
+                        <textarea id="summary" placeholder="Brief summary of your professional background..." onchange="updatePreview()"></textarea>
+                    </div>
+                </div>
+
+                <!-- Experience Section -->
+                <div class="form-section">
+                    <h3>Professional Experience</h3>
+                    <div id="experienceContainer"></div>
+                    <button type="button" class="btn btn-add" onclick="addExperience()">+ Add Experience</button>
+                </div>
+
+                <!-- Education Section -->
+                <div class="form-section">
+                    <h3>Education</h3>
+                    <div id="educationContainer"></div>
+                    <button type="button" class="btn btn-add" onclick="addEducation()">+ Add Education</button>
+                </div>
+
+                <!-- Skills Section -->
+                <div class="form-section">
+                    <h3>Skills</h3>
+                    <div class="skills-input-group">
+                        <input type="text" id="skillInput" placeholder="Enter a skill..." onkeypress="handleSkillKeyPress(event)">
+                        <button type="button" class="btn btn-add" onclick="addSkill()">Add Skill</button>
+                    </div>
+                    <div id="skillsContainer" class="skills-list"></div>
+                </div>
+
+                <!-- Certifications Section -->
+                <div class="form-section">
+                    <h3>Certifications</h3>
+                    <div id="certificationsContainer"></div>
+                    <button type="button" class="btn btn-add" onclick="addCertification()">+ Add Certification</button>
+                </div>
+
+                <!-- Languages Section -->
+                <div class="form-section">
+                    <h3>Languages</h3>
+                    <div id="languagesContainer"></div>
+                    <button type="button" class="btn btn-add" onclick="addLanguage()">+ Add Language</button>
+                </div>
+            </form>
+
+            <div class="sidebar-actions">
+                <button class="btn btn-primary" onclick="saveResume()">💾 Save</button>
+                <button class="btn btn-success" onclick="downloadPDF()">📥 Download PDF</button>
+            </div>
+        </div>
+
+        <div class="builder-preview">
+            <div class="preview-header">
+                <h2>Preview</h2>
+                <p class="preview-subtitle" id="templateInfo">Modern Template</p>
+            </div>
+            <div id="resumePreview" class="resume-preview">
+                <!-- Preview content will be rendered here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Resume Builder. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/resumeData.js"></script>
+    <script src="js/templates.js"></script>
+    <script src="js/builder.js"></script>
+</body>
+</html>
